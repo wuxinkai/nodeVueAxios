@@ -1,24 +1,14 @@
-# my-project
+# 安装脚手架
+```
+npm install -g @vue/cli
+yarn global add @vue/cli
+```
+# 创建项目
+```
+vue create my-project
+```
+### 最后一个是手动安装
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
