@@ -41,17 +41,24 @@ module.exports = {
         port: 3000, // 端口号
         https: false,
         hotOnly: false,
-        proxy: null,
-        // proxy: { // 配置多个代理
-        //     '/api': {
-        //         target: '<url>',
-        //         ws: true,
-        //         changOrigin: true
-        //     },
-        //     "/foo": {
-        //         target: "<other_url>"
-        //     }
-        // },
+        // proxy: null,
+        proxy: { // 配置多个代理
+            '/api': {
+                target: 'http://49.232.19.124:3000',
+                ws: true,
+                changOrigin: true
+            },
+            // '/api2': {
+            //     target: 'http://49.232.19.124:3000',
+            //     ws: true,
+            //     changOrigin: true
+            // },
+            "/foo": {
+                target: "http://localhost:9000",
+                ws: true,
+                changOrigin: true
+            }
+        },
         before: app => {}
     },
     parallel: require('os').cpus().length > 1, // 构建时开启多进程处理 babel 编译

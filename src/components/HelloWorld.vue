@@ -44,7 +44,7 @@
     <Suspense>
       <template #default>
         <div>
-         <dog-show />
+          <dog-show />
         </div>
       </template>
       <template #fallback>
@@ -80,6 +80,7 @@ import useURLLoader from '../hooks/useURLLoader'
 import Modal from './Modal.vue'
 import AsyncShow from './AsyncShow.vue'
 import DogShow from './DogShow.vue'
+import axios from 'axios'
 // typejs格式校验
 interface DataProps {
   count: number
@@ -180,6 +181,17 @@ export default defineComponent({
       }
     })
 
+    axios.get('/api/users').then((rawData) => {
+      console.log('腾讯云接口',rawData.data)
+    }).catch((e) => {
+       console.log(e)
+      })
+
+    axios.get('/home').then((rawData) => {
+      console.log('本地',rawData.data)
+    }).catch((e) => {
+       console.log(e)
+      })
     //打开弹出框
     const modalIsOpen = ref(false)
 
@@ -190,8 +202,8 @@ export default defineComponent({
       modalIsOpen.value = false
     }
 
-//捕获代码异常
-      const errorData = ref(null)
+    //捕获代码异常
+    const errorData = ref(null)
 
     onErrorCaptured((e: any) => {
       errorData.value = e
@@ -210,7 +222,6 @@ export default defineComponent({
       result,
       loading,
       loaded,
-    
 
       modalIsOpen,
       opemModal,
