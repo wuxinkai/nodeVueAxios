@@ -46,18 +46,13 @@ module.exports = {
             '/api': {
                 target: 'http://49.232.19.124:3000',
                 ws: true,
-                changOrigin: true
+                changOrigin: true 
             },
             // '/api2': {
             //     target: 'http://49.232.19.124:3000',
             //     ws: true,
             //     changOrigin: true
             // },
-            "/foo": {
-                target: "http://localhost:9000",
-                ws: true,
-                changOrigin: true
-            }
         },
         before: app => {}
     },

@@ -11,6 +11,7 @@ NProgress.configure({ showSpinner: false, easing: 'ease', speed: 1000 }); // NPr
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import homePage from '@/components/common/homePage.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -24,13 +25,13 @@ const routes: Array<RouteRecordRaw> = [
         title: "路由传参",
       },
       component: () => import('@/views/vueRoute/routePath.vue'),
-    
+
     }
     ]
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
@@ -49,9 +50,20 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((/* to, from */) => {
+router.beforeEach((to, from, next) => {
   // start progress bar
+ 
+  // let tokenData = sessionStorage.getItem('token')
+  // console.log(tokenData)
+  // if (tokenData) {
+  //   let token = JSON.parse(tokenData)
+  //   next()
+  // } else {
+  //   next('/login')
+  // }
+  next()
   NProgress.start();
+
 });
 
 router.afterEach(() => {

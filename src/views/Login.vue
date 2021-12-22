@@ -15,11 +15,14 @@
 </template>
 
 <script lang="ts">
+import axios from 'axios'
 interface fromResult {
   user: string
   pwd: string
 }
 import { defineComponent, toRefs, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default defineComponent({
   setup(props, context) {
     const formData: fromResult = reactive({
@@ -27,11 +30,21 @@ export default defineComponent({
       pwd: ''
     })
     // const formData = toRefs(data)
-
+    const router = useRouter()
     const onSubmit = () => {
-      console.log( JSON.parse(JSON.stringify(formData)))
-
-      debugger
+      axios.post('http://localhost:9000/login/register', JSON.parse(JSON.stringify(formData)))
+        .then((rawData) => {
+          if (rawData) {
+            //实现页面跳转
+            router.push({
+              name: 'about'
+            })
+            sessionStorage.setItem('token', JSON.stringify(rawData.data))
+          }
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
 
     return {

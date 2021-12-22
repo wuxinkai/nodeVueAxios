@@ -187,7 +187,7 @@ export default defineComponent({
        console.log(e)
       })
 
-    axios.get('/home').then((rawData) => {
+    axios.get('http://localhost:9000/home').then((rawData) => {
       console.log('本地',rawData.data)
     }).catch((e) => {
        console.log(e)
