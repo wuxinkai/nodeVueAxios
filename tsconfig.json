@@ -33,7 +33,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "exclude": [
+  "exclude": [//排除文件
     "node_modules"
   ]
 }

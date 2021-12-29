@@ -1,7 +1,7 @@
 <template>
-  <div id="nav">
+
     <router-view></router-view>
-  </div>
+
 
 </template>
 
@@ -10,11 +10,8 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+height: 100%;
   color: #2c3e50;
 }
-body,html{
-margin: 0;
-padding: 0;
-}
+
 </style>

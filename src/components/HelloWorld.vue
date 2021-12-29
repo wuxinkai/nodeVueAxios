@@ -54,6 +54,24 @@
     <br>
     <br>
     <p>{{errorData}}</p>
+
+    <br>
+    <br>
+    <br>
+    <div style="display: inline-block;" ref="dropdownRef">
+      <button @click.prevent="toggleOpen">事件委托,关闭弹出</button>
+      <ul class="dropdown-menu" :style="{display: 'block'}" v-if="isOpen">
+        <li> 232342332</li>
+        <li> 232342332</li>
+        <li> 232342332</li>
+        <li> 232342332</li>
+        <li> 232342332</li>
+      </ul>
+    </div>
+
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -77,6 +95,7 @@ import {
 } from 'vue'
 import useMousePosition from '../hooks/useMousePosition'
 import useURLLoader from '../hooks/useURLLoader'
+import useClickOutside from '../utils/useClickOutside'
 import Modal from './Modal.vue'
 import AsyncShow from './AsyncShow.vue'
 import DogShow from './DogShow.vue'
@@ -181,16 +200,22 @@ export default defineComponent({
       }
     })
 
-    axios.get('/api/users').then((rawData) => {
-      console.log('腾讯云接口',rawData.data)
-    }).catch((e) => {
-       console.log(e)
+    axios
+      .get('/api/users')
+      .then((rawData) => {
+        console.log('腾讯云接口', rawData.data)
+      })
+      .catch((e) => {
+        console.log(e)
       })
 
-    axios.get('http://localhost:9000/home').then((rawData) => {
-      console.log('本地',rawData.data)
-    }).catch((e) => {
-       console.log(e)
+    axios
+      .get('http://localhost:9000/home')
+      .then((rawData) => {
+        console.log('本地', rawData.data)
+      })
+      .catch((e) => {
+        console.log(e)
       })
     //打开弹出框
     const modalIsOpen = ref(false)
@@ -210,6 +235,21 @@ export default defineComponent({
       return true
     })
 
+    // 事件问题
+    const isOpen = ref(false)
+    const dropdownRef = ref<null | HTMLElement>(null)
+    const isClickOutside = useClickOutside(dropdownRef)
+    const toggleOpen = () => {
+      isOpen.value = !isOpen.value
+    }
+    console.log(333, dropdownRef)
+    watch(isClickOutside, (newValue, oldValue) => {
+      debugger
+      if (isOpen.value && isClickOutside.value) {
+        isOpen.value = false
+      }
+    })
+
     return {
       ...refData,
       greeting,
@@ -226,7 +266,10 @@ export default defineComponent({
       modalIsOpen,
       opemModal,
       onModalClone,
-      errorData
+      errorData,
+      isOpen,
+      toggleOpen,
+      dropdownRef
     }
   }
 })
@@ -247,5 +290,11 @@ li {
 }
 a {
   color: #42b983;
+}
+.dropdown-menu {
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  background: pink;
 }
 </style>

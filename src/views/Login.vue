@@ -32,7 +32,8 @@ export default defineComponent({
     // const formData = toRefs(data)
     const router = useRouter()
     const onSubmit = () => {
-      axios.post('http://localhost:9000/login/register', JSON.parse(JSON.stringify(formData)))
+      axios.defaults.baseURL ='http://localhost:9000'
+      axios.post('/login/register', JSON.parse(JSON.stringify(formData)))
         .then((rawData) => {
           if (rawData) {
             //实现页面跳转

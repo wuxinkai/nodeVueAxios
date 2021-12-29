@@ -1,32 +1,37 @@
 <template>
-  <div>
-    <Header></Header>
 
+  <el-container class="percent">
     <sidebar></sidebar>
-    <div class="content_box" >
-      <Tags></Tags>
-      <div class="content">
-        <transition name="move" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </div>
-    </div>
-  </div>
+    <el-main class="auto-main">
+      <Header ></Header>
+      <transition name="move" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </el-main>
+  </el-container>
+
 </template>
 
 <script>
 import Sidebar from './sidebar'
-import Header from './header'
-import Tags from './tags'
+import Header from './header.vue'
 export default {
 
   components: {
     Sidebar,
     Header,
-    Tags,
+    // Tags,
   },
+  setup () {}
 }
 </script>
 
 <style>
+.percent {
+  width: 100%;
+  height: 100%;
+}
+.auto-main {
+  padding: 0;
+}
 </style>

@@ -38,8 +38,8 @@ export default defineComponent({
   height: 200px;
   background: #f1f1f1;
   border: 1px solid #ccc;
-  position: absolute;
-  left: 30%;
+  position: fixed;
+  left: 50%;
   top: 50%;
   margin: -50px 0 0 -50px;
 }
