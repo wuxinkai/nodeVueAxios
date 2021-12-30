@@ -19,50 +19,59 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     // component: Home
     component: Layout,
+    redirect: "routePath",
     meta: {
       title: "首页",
       notCache: true,
     },
     children: [{
-      path: "routePath",
+      path: "/routePath",
       name: "routePath",
-
       meta: {
         title: "路由传参",
       },
       component: () => import('@/views/vueRoute/routePath.vue'),
 
     },
+    {
+      path: "/other",
+      name: "other",
+      meta: {
+        title: "其他设置",
+      },
+      component: () => import('@/views/settings/other.vue'),
 
+    },
+    {
+      path: "/columnHome",
+      name: "columnHome",
+      meta: {
+        title: "列表",
+      },
+      component: () => import('@/views/ColumnList/columnHome.vue'),
+
+    },
+    {
+      path: '/about',
+      name: 'about',
+      meta: {
+        title: "about",
+        notCache: true,
+      },
+      component: () => import('../views/About.vue')
+    },
+    {
+      path: '/from',
+      name: 'from',
+      meta: {
+        title: "From",
+        notCache: true,
+      },
+      component: () => import('../views/From.vue')
+    },
     ]
   },
-  {
-    path: "/columnHome",
-    name: "columnHome",
-    meta: {
-      title: "列表",
-    },
-    component: () => import('@/views/ColumnList/columnHome.vue'),
 
-  },
-  {
-    path: '/about',
-    name: 'about',
-    meta: {
-      title: "about",
-      notCache: true,
-    },
-    component: () => import('../views/About.vue')
-  },
-  {
-    path: '/from',
-    name: 'from',
-    meta: {
-      title: "From",
-      notCache: true,
-    },
-    component: () => import('../views/From.vue')
-  },
   {
     path: '/login',
     name: 'login',

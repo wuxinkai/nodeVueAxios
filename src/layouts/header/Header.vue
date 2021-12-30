@@ -1,13 +1,25 @@
 <template>
-  <div>toubu</div>
+  <div class="header">
+    <collapse></collapse>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+import { defineComponent } from 'vue'
+import collapse from './collapse.vue'
+export default defineComponent({
+  components: {
+    collapse
+  },
+  setup () {
+    return {}
+  },
+})
 </script>
 
 <style>
-
+.header{
+  display: flex;
+  align-items: center;
+}
 </style>

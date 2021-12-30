@@ -83,3 +83,41 @@ vuex接受数据
  import { computed} from "vue";
  const userlist = computed(() => store.getters.getColumns)
 ```
+
+# icon 引入方式 一
+E:\1node\nodeVueAxios\src\main.ts
+```
+import * as Icons from '@element-plus/icons-vue'
+
+Object.keys(Icons).forEach((key)=>{
+  console.log(key)
+  app.component(key,Icons[key as keyof typeof Icons])
+})
+
+vue 模板页面应用 ,必须包裹el-icon
+<el-icon>
+   <component class="icons" v-else :is="menu.meta.icon"></component>
+</el-icon>
+
+
+```
+
+# icon 引入方式 二
+```
+import { createApp, createVNode } from 'vue'
+
+// 创建Icon组件
+const Icon = (props: { icon: string }) => {
+  const { icon } = props
+  return createVNode(Icons[icon as keyof typeof Icons])
+}
+
+// 注册Icon组件
+app.component('Icon', Icon)
+
+
+// 模板应用
+<template>
+  <Icon class="xxx" icon="Search"></Icon>
+</template>
+```

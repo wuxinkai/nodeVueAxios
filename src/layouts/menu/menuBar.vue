@@ -1,69 +1,99 @@
 <template>
-  <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-    <el-radio-button :label="false">expand</el-radio-button>
-    <el-radio-button :label="true">collapse</el-radio-button>
-  </el-radio-group>
-  <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+  <menu-logo v-if="!isCollapse"></menu-logo>
+  <el-menu :default-active="activeIdex" active-text-color="#f60" text-color="#fff" background-color="#2A364C" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
+    @close="handleClose" router>
     <MenuItem :menuList="menuList">
     </MenuItem>
   </el-menu>
 </template>
 <script  lang="ts">
-import { ref, defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, computed,ref } from 'vue'
 import MenuItem from './menuItem.vue'
-
+import menuLogo from './menuLogo.vue'
+import { useRoute } from 'vue-router'
+import store from '@/store';
 export default defineComponent({
   name: 'layouts',
   components: {
-    MenuItem
+    MenuItem,
+    menuLogo
   },
   setup() {
     const menuList = reactive([
       {
-        path: 'routePath',
+        path: '/',
         alwaysShow: false,
         meta: {
-          title: '路由传参',
-          icon: 'el-icon-edit',
+          title: '路由',
+          icon: 'Drizzling',
           parentId: 0
         },
-        component: () => import('@/views/vueRoute/routePath.vue'),
+
         children: [
           {
-            path: 'routePath',
+            path: '/routePath',
             alwaysShow: false,
             meta: {
               title: '路由传参',
-              icon: 'el-icon-edit',
+              icon: 'Fold',
               parentId: 34
-            },
-            component: () => import('@/views/vueRoute/routePath.vue')
+            }
+          },
+          {
+            path: '/other',
+            alwaysShow: false,
+            meta: {
+              title: '其他设置',
+              icon: 'Fold',
+              parentId: 35
+            }
+          },
+          {
+            path: '/columnHome',
+            alwaysShow: false,
+            meta: {
+              title: '列表',
+              icon: 'Female',
+              parentId: 3
+            }
+          },
+          {
+            path: '/about',
+            meta: {
+              title: '项目大全',
+              parentId: 4,
+              notCache: true
+            }
           }
         ]
-      },
-      {
-        path: 'paaaaaa',
-        alwaysShow: false,
-        meta: {
-          title: '222222',
-          icon: 'el-icon-edit',
-          parentId: 1
-        },
-        component: () => import('@/views/vueRoute/routePath.vue')
       }
     ])
-    const isCollapse = ref(false)
+
+
+    //获取vuex值
+    // const isCollapse = ref(false)
+    const isCollapse = computed(() => {
+      return store.getters['getCollapse']
+    })
     const handleOpen = (key: string | number, keyPath: string) => {
       console.log(key, keyPath)
     }
     const handleClose = (key: string | number, keyPath: string) => {
       console.log(key, keyPath)
     }
+
+    //打开当前菜单
+    const route = useRoute()
+    const activeIdex = computed(() => {
+      const { path } = route
+      return path
+    })
     return {
       isCollapse,
       handleOpen,
       handleClose,
-      menuList
+      menuList,
+      activeIdex
     }
   }
 })

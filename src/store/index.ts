@@ -12,21 +12,33 @@ interface ListProps<P> {
 }
 
 export interface GlobalDataProps {
-  users: ListProps<UsersProps>;
+  users: ListProps<UsersProps>,
+  collapse: boolean
 }
+
+
 
 const store = createStore<GlobalDataProps>({
   state: {
-    users: {}
+    users: {},
+    collapse: false,// 折叠菜单
   },
   getters: {
     getColumns: (state) => {
       return state.users.data
     },
+    //获取菜单是折叠还是展开
+    getCollapse(state) {
+      return state.collapse
+    }
   },
   mutations: {
     fetchColumns(state, rawData) {
       state.users.data = rawData
+    },
+    //设置菜单是折叠还是展开
+    setCollapse(state, collapse) {
+      state.collapse = collapse
     }
   },
   actions: {
@@ -38,6 +50,7 @@ const store = createStore<GlobalDataProps>({
     },
   },
   modules: {
+
   }
 })
 export default store

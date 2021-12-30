@@ -7,7 +7,9 @@
       <el-header class="header">
         <Header></Header>
       </el-header>
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -29,7 +31,7 @@ export default defineComponent({
 .layouts {
   height: 100%;
   .asside {
-    background: pink;
+    background: #2A364C;
   }
   .header {
     background: rgba(91, 211, 35, 0.678);
