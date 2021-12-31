@@ -24,7 +24,7 @@ export default defineComponent({
     })
     // 设置vuex的折叠状态
     const changeIcon = () => {
-      console.log(1111,!status.value)
+      console.log(1111, !status.value)
       store.commit('setCollapse', !status.value)
     }
 
@@ -39,5 +39,8 @@ export default defineComponent({
 .icons {
   width: 26px;
   height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

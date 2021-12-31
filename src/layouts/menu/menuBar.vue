@@ -1,5 +1,5 @@
 <template>
-  <menu-logo v-if="!isCollapse"></menu-logo>
+  <menu-logo class="layout-logo" v-if="!isCollapse"></menu-logo>
   <el-menu :default-active="activeIdex" active-text-color="#f60" text-color="#fff" background-color="#2A364C" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
     @close="handleClose" router>
     <MenuItem :menuList="menuList">
@@ -100,6 +100,24 @@ export default defineComponent({
 </script>
 
 <style>
+
+
+@keyframes logoAnimation {
+  0%{
+    transform: scale(0);
+  }
+   50%{
+    transform: scale(1);
+  }
+   100%{
+    transform: scale(1);
+  }
+}
+/* 头部导航动画 */
+.layout-logo{
+  animation: logoAnimation 1s ease-out;
+}
+
 /*
  <el-aside width="auto" class="asside"> 设置 auto
 再这设置宽度 就可以实现响应式
