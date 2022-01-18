@@ -29,7 +29,7 @@ module.exports = {
       if (process.env.NODE_ENV === 'production') {
           return {
               plugins: [
-                  new BundleAnalyzerPlugin()
+                  // new BundleAnalyzerPlugin() // 打包可视化工具 可以查看打包后的压缩包具体情况
               ]
           }
       }
