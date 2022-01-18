@@ -1,7 +1,6 @@
 <template>
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item v-for="item in tabs ">{{item.meta.title}}</el-breadcrumb-item>
-
+    <el-breadcrumb-item v-for="item in tabs " :key="item.title">{{item.meta.title}}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
@@ -12,7 +11,6 @@ export default defineComponent({
   setup () {
     const tabs = ref([])
     const route = useRoute()
-    console.log(444, route.matched)
     const gerBredcurm = () => {
       let mached = route.matched.filter(item => item.meta && item.meta.title)
       const first = mached[0]

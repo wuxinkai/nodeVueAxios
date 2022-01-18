@@ -31,7 +31,6 @@ const routes: Array<RouteRecordRaw> = [
         title: "路由传参",
       },
       component: () => import('@/views/vueRoute/routePath.vue'),
-
     },
     {
       path: "/other",

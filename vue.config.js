@@ -46,7 +46,7 @@ module.exports = {
             '/api': {
                 target: 'http://49.232.19.124:3000',
                 ws: true,
-                changOrigin: true 
+                changOrigin: true
             },
             // '/api2': {
             //     target: 'http://49.232.19.124:3000',

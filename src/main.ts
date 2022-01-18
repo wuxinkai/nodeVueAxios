@@ -5,7 +5,7 @@ import store from './store'
 import ElementPlus from "element-plus"
 // import { useElementPlus } from "../src/plugins/element-plus";
 // 全局样式
-// import '@/assets/css/global.scss'; 
+// import '@/assets/css/global.scss';
 
 // 引入 ElementUI
 // import "element-plus/lib/theme-chalk/index.css"

@@ -8,6 +8,7 @@
         <Header></Header>
       </el-header>
       <el-main class="main">
+        <Tabs></Tabs>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -17,12 +18,14 @@
 <script>
 import Header from './header/Header.vue'
 import MenuBar from './menu/menuBar.vue'
+import Tabs from "./tabs/Tabs.vue";
 import { defineComponent, } from "vue";
 export default defineComponent({
   name: "layouts",
   components: {
     Header,
-    MenuBar
+    MenuBar,
+    Tabs
   },
 })
 </script>
@@ -37,7 +40,7 @@ export default defineComponent({
     background: rgba(91, 211, 35, 0.678);
   }
   .main {
-    background: rgb(190, 18, 119);
+
   }
 }
 </style>

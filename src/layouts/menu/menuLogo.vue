@@ -1,20 +1,20 @@
 <template>
   <div class="logo">
-    <el-icon class="icon" size="2rem">
+    <!-- <el-icon class="icon" size="2rem">
       <share />
-    </el-icon>
+    </el-icon> -->
     <span>vue3+typescript实战</span>
   </div>
 </template>
 <script  lang="ts">
 import { ref, defineComponent, reactive } from 'vue'
-import { Edit, Share, Delete, Search } from '@element-plus/icons'
+// import { Edit, Share, Delete, Search } from '@element-plus/icons'
 export default defineComponent({
   name: 'menuLogo',
-  components: {
-    Share,
-    Edit
-  },
+  // components: {
+  //   Share,
+  //   Edit
+  // },
   setup() {
     return {}
   }

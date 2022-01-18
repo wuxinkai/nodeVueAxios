@@ -28,14 +28,14 @@
 </template>
 
 <script  lang="ts">
-import { Edit, Share, Delete, Search } from '@element-plus/icons'
+// import { Edit, Share, Delete, Search } from '@element-plus/icons'
 import { ref, defineComponent } from 'vue'
 export default defineComponent({
   props: {
     menuList: Array
   },
   components: {
-    Delete
+    // Delete
   }
 })
 </script>

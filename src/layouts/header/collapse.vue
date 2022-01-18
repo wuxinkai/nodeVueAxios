@@ -6,7 +6,6 @@
 <script>
 import { computed, ref, defineComponent } from 'vue'
 import { Fold, Expand } from '@element-plus/icons'
-// import { useStore } from '@/store/index'
 import store from '@/store';
 export default defineComponent({
   components: {
